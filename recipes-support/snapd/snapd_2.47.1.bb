@@ -1,3 +1,6 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+SRC_URI += "file://0001-poky-apparmor-fix.patch"
+
 SUMMARY = "The snapd and snap tools enable systems to work with .snap files."
 HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "GPL-3.0"
