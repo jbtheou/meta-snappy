@@ -1,5 +1,4 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-SRC_URI += "file://0001-poky-apparmor-fix.patch"
 
 SUMMARY = "The snapd and snap tools enable systems to work with .snap files."
 HOMEPAGE = "https://www.snapcraft.io"
@@ -8,6 +7,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab8
 
 SRC_URI = "									\
 	https://${GO_IMPORT}/releases/download/${PV}/snapd_${PV}.vendor.tar.xz	\
+        file://0001-poky-apparmor-fix.patch                                     \
 "
 
 SRC_URI[md5sum] = "d6de9d882b3d3b219d637a028b2c2279"
