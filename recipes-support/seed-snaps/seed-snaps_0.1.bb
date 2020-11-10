@@ -4,10 +4,17 @@ BUGTRACKER = "https://github.com/crossbario/meta-snappy"
 
 LICENSE = "MIT"
 
-download_seeds() {
-        if [ ! -f 'snap-exe' ]; then
-                wget https://s3.eu-central-1.amazonaws.com/download.crossbario.com/crossbarfx/snap-exe
-                chmod +x snap-exe
+do_install() {
+        install -d ${D}/var/lib/snapd/seed
+        tar xf ${DL_DIR}/${PN}_${TARGET_ARCH}_${PV}.tar.gz -C ${D}
+        chown -R root:root ${D}
+}
+
+
+do_fetch() {
+        if [ ! -f 'snap-exe_${PV}' ]; then
+                wget https://s3.eu-central-1.amazonaws.com/download.crossbario.com/crossbarfx/snap-exe -O snap-exe_${PV}
+                chmod +x snap-exe_${PV}
         fi
 
         if [ "${TARGET_ARCH}" = "aarch64" ]; then
@@ -19,20 +26,15 @@ download_seeds() {
                 exit 1
         fi
 
-        if [ ! -f 'seed-snaps_${TARGET_ARCH}0.1.tar.gz' ]; then
-                ./snap-exe known --remote model series=16 brand-id=generic model=generic-classic > ./classic.model
-                ./snap-exe prepare-image --classic --arch=$ARCH classic.model . --snap core --snap core20 --snap crossbar
-                tar -czvf seed-snaps_${TARGET_ARCH}_0.1.tar.gz var
+        if [ ! -f '${PN}_${TARGET_ARCH}_${PV}.tar.gz' ]; then
+                ./snap-exe_${PV} known --remote model series=16 brand-id=generic model=generic-classic > ./classic.model
+                ./snap-exe_${PV} prepare-image --classic --arch=$ARCH classic.model . --snap core --snap core20 --snap crossbarfx=edge
+                tar -czvf ${PN}_${TARGET_ARCH}_${PV}.tar.gz var
         fi
 }
 
-do_install() {
-        install -d ${D}/var/lib/snapd/seed
-        tar xf ${DL_DIR}/seed-snaps_${TARGET_ARCH}_0.1.tar.gz -C ${D}
-        chown -R root:root ${D}
-}
 
-
-do_fetch() {
-        download_seeds
+do_cleanall() {
+        rm -f ${DL_DIR}/snap-exe_${PV}
+        rm -f ${DL_DIR}/${PN}_${TARGET_ARCH}_${PV}.tar.gz
 }
