@@ -40,7 +40,6 @@ DEPENDS += "			\
 
 RDEPENDS_${PN} += "		\
 	ca-certificates		\
-	kernel-module-squashfs	\
 	bash \
 "
 

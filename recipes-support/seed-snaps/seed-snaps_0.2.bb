@@ -28,7 +28,7 @@ do_fetch() {
 
         if [ ! -f '${PN}_${TARGET_ARCH}_${PV}.tar.gz' ]; then
                 ./snap-exe_${PV} known --remote model series=16 brand-id=generic model=generic-classic > ./classic.model
-                ./snap-exe_${PV} prepare-image --classic --arch=$ARCH classic.model . --snap core --snap core20 --snap crossbarfx=edge
+                ./snap-exe_${PV} prepare-image --classic --arch=$ARCH classic.model . --snap snapd --snap core20 --snap crossbarfx=edge
                 tar -czvf ${PN}_${TARGET_ARCH}_${PV}.tar.gz var
         fi
 }
