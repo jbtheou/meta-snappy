@@ -74,3 +74,5 @@ SRC_URI += "file://0001-securityfs-update-interface-to-allow-inode_ops-and-s.pat
     file://0072-Fix-previous-net-reverts.patch \
     file://snappy.cfg \
 "
+
+COMPATIBLE_MACHINE = "jetson-xavier-nx-devkit"
