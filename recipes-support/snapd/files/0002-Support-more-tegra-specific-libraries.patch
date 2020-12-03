@@ -1,0 +1,34 @@
+From d62a937f9816ea82c95d0b3a7131580e296bc8cb Mon Sep 17 00:00:00 2001
+From: Omer Akram <om26er@gmail.com>
+Date: Thu, 3 Dec 2020 20:28:54 +0500
+Subject: [PATCH] Support more tegra specific libraries
+
+---
+ interfaces/builtin/opengl.go | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/interfaces/builtin/opengl.go b/interfaces/builtin/opengl.go
+index d0ad81f9e8..24dd07f003 100644
+--- a/interfaces/builtin/opengl.go
++++ b/interfaces/builtin/opengl.go
+@@ -44,6 +44,7 @@ const openglConnectedPlugAppArmor = `
+ /var/lib/snapd/hostfs/{,usr/}lib{,32,64,x32}/{,@{multiarch}/}lib{GL,GLESv1_CM,GLESv2,EGL}*nvidia.so{,.*} rm,
+ /var/lib/snapd/hostfs/{,usr/}lib{,32,64,x32}/{,@{multiarch}/}libGLdispatch.so{,.*} rm,
+ /var/lib/snapd/hostfs/{,usr/}lib{,32,64,x32}/{,@{multiarch}/}vdpau/libvdpau_nvidia.so{,.*} rm,
++/var/lib/snapd/hostfs/{,usr/}lib{,32,64,x32}/{,@{multiarch}/}libnv{rm,dc,imp,os}*.so{,.*} rm,
+ 
+ # Support reading the Vulkan ICD files
+ /var/lib/snapd/lib/vulkan/ r,
+@@ -55,6 +56,9 @@ const openglConnectedPlugAppArmor = `
+ /var/lib/snapd/lib/glvnd/** r,
+ /var/lib/snapd/hostfs/usr/share/glvnd/egl_vendor.d/*nvidia*.json r,
+ 
++# Support Nvidia EGL external platform
++/var/lib/snapd/hostfs/usr/share/egl/egl_external_platform.d/*nvidia*.json r,
++
+ # Main bi-arch GL libraries
+ /var/lib/snapd/hostfs/{,usr/}lib{,32,64,x32}/{,@{multiarch}/}{,nvidia*/}lib{GL,GLU,GLESv1_CM,GLESv2,EGL,GLX}.so{,.*} rm,
+ 
+-- 
+2.25.1
+

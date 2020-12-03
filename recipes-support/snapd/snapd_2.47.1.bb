@@ -8,6 +8,8 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab8
 SRC_URI = "									\
 	https://${GO_IMPORT}/releases/download/${PV}/snapd_${PV}.vendor.tar.xz	\
         file://0001-poky-apparmor-fix.patch                                     \
+        file://0002-Support-more-tegra-specific-libraries.patch                 \
+        file://0003-allow-lose-dir-access-glvnd.patch                           \
 "
 
 SRC_URI[md5sum] = "d6de9d882b3d3b219d637a028b2c2279"
