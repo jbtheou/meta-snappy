@@ -10,6 +10,7 @@ SRC_URI = "									\
         file://0001-poky-apparmor-fix.patch                                     \
         file://0002-Support-more-tegra-specific-libraries.patch                 \
         file://0003-allow-lose-dir-access-glvnd.patch                           \
+        file://0004-Allow-more-CUDA-libraries.patch                             \
 "
 
 SRC_URI[md5sum] = "d6de9d882b3d3b219d637a028b2c2279"
