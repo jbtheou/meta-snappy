@@ -75,7 +75,7 @@ index 000000000000..19a4744032dd
 +CONFIG_BTRFS_FS=m
 +CONFIG_BLK_DEV_DM=y
 +CONFIG_DM_THIN_PROVISIONING=m
-+CONFIG_OVERLAY_FS=m
++CONFIG_OVERLAY_FS=y
 +CONFIG_OVERLAY_FS_V1=y
 diff --git a/kernel/configs/snappy/generic.config b/kernel/configs/snappy/generic.config
 new file mode 100644
