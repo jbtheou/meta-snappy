@@ -7,14 +7,10 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab8
 
 SRC_URI = "									\
 	https://${GO_IMPORT}/releases/download/${PV}/snapd_${PV}.vendor.tar.xz	\
-        file://0001-poky-apparmor-fix.patch                                     \
-        file://0002-Support-more-tegra-specific-libraries.patch                 \
-        file://0003-allow-lose-dir-access-glvnd.patch                           \
-        file://0004-Allow-more-CUDA-libraries.patch                             \
 "
 
-SRC_URI[md5sum] = "d6de9d882b3d3b219d637a028b2c2279"
-SRC_URI[sha256sum] = "4f9666cd15d588017d4287aafdb3e7855748509afaa3002e6d149db1424e032f"
+SRC_URI[md5sum] = "448e3d2d2cefff1156d946e2bdcf65bc"
+SRC_URI[sha256sum] = "c1a0c19420594dee222779fd2c8472a65173291b445727a6bd1bbc83f79d1687"
 
 GO_IMPORT = "github.com/snapcore/snapd"
 
