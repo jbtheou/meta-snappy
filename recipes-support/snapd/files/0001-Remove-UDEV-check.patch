@@ -1,0 +1,30 @@
+From af9b0c2fbff18669b5d12838550a17d580f02232 Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Theou <jb@thing.com>
+Date: Sun, 28 Mar 2021 21:52:26 +0200
+Subject: [PATCH 1/2] Remove UDEV check
+
+As we are only building Snap and udev-native doesn't exist, remove this
+check (For yocto)
+---
+ cmd/configure.ac | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/cmd/configure.ac b/cmd/configure.ac
+index f5828da..8ff819c 100644
+--- a/cmd/configure.ac
++++ b/cmd/configure.ac
+@@ -103,11 +103,6 @@ PKG_CHECK_MODULES([SELINUX], [libselinux], [
+ AC_DEFINE([HAVE_SELINUX], [1], [Build with SELinux support])])
+ ])
+ 
+-# Check if udev and libudev are available.
+-# Those are now used unconditionally even if apparmor is disabled.
+-PKG_CHECK_MODULES([LIBUDEV], [libudev])
+-PKG_CHECK_MODULES([UDEV], [udev])
+-
+ # Check if libcap is available.
+ # PKG_CHECK_MODULES([LIBCAP], [libcap])
+ 
+-- 
+2.31.0
+
